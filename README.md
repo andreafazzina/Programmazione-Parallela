@@ -41,3 +41,35 @@ Prima di lanciare il programma, assicurati di avere un file `dictionary.txt` nel
 ```bash
 chmod +x generate_hashes.sh
 ./generate_hashes.sh
+```
+
+### 2. Compilazione
+Il progetto è gestito interamente tramite `Makefile`. 
+
+Per compilare la versione Standard (`main.c`):
+```bash
+make
+```
+
+Per compilare la versione ad I/O Parallelo (`main_bonus.c`):
+```bash
+make bonus
+```
+
+Per pulire i file oggetto ed eseguibili pregressi:
+```bash
+make clean
+```
+
+### 3. Esecuzione
+Il software richiede la definizione del numero di processi distribuiti (tramite `mpirun`) e dei thread per singolo processo (tramite variabile d'ambiente). 
+
+Esempio di esecuzione della **Versione Standard** con 6 Processi MPI e 2 Thread OpenMP ciascuno:
+```bash
+OMP_NUM_THREADS=2 mpirun -np 6 ./cracker
+```
+
+Esempio di esecuzione della **Versione Bonus** con 6 Processi MPI e 2 Thread OpenMP ciascuno:
+```bash
+OMP_NUM_THREADS=2 mpirun -np 6 ./cracker_bonus
+```
